@@ -2,9 +2,9 @@ NAME = libftprintf.a
 
 FLAG = -Wall -Wextra -Werror
 
-SRCS = ./srcs/ft_putstr_test.c
+SRCS = ./srcs/ft_printf.c
 
-OBJS = ./ft_putstr_test.o
+OBJS = ./ft_printf.o
 
 
 all :	${NAME}
@@ -12,7 +12,7 @@ all :	${NAME}
 $(NAME):	${OBJS}
 	ar rc $(NAME) ${OBJS}
 	ranlib ${NAME} libft/libft.a
-	gcc ft_printf.c ${NAME} -I Includes
+	gcc main.c ${NAME} -I Includes
 
 $(OBJS):
 	make -C libft
