@@ -1,7 +1,7 @@
-#include "Includes/ft_printf.h"
+#include "./Includes/ft_printf.h"
 
 int main(void)
 {
-	ft_printf("bonjour mon vieu", 12, 35);
+	printf("%d\n", ft_printf("toll%lo", 12, 35));
 	return(0);
 }

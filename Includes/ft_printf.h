@@ -6,24 +6,14 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "../libft/libft.h"
-int ft_printf(const char *str, ...);
-void	ft_putstr_test(char *str);
 
-typedef struct	s_env
+typedef struct	s_info
 {
-	const char	*str;
-	size_t		cur;
-	char		flag[5];
-	int			size;
-	int			dot;
-	int			precision;
-	char		modif[6];
-	char		conv;
-	size_t		printcar;
-	int			len;
-	int			ret;
-	void		*argum;
-}				t_env;
+	int count;  
+}		t_info;
+int		ft_printf(const char *contain, ...);
+char		*ft_print_result(char *str, va_list ap, t_info *info);
+
 
 #endif
 
