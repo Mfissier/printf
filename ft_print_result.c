@@ -2,8 +2,45 @@
 
 char		*ft_print_result(char *str, va_list ap, t_info *info)
 {
-	ft_putstr_fd(str, 1);
+	printf("Lecture : %s\n", str);
+	printf("\nresultat ft_str_all_chr = %d\n\n", ft_str_all_chr(str, "diouxXDOUpb"));
+
+	if (ft_str_all_chr(str, "diouxXDOUpb"))
+		ft_print_nbr_for_conv(str, ap);
+	else if (ft_str_all_chr(str, "cCsS"))
+		printf("FONCTION DE CONVERTION ICI POUR LES CHARACTERES\n");		
 	va_arg(ap, int);
 	info->count += 1;
 	return(str);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+	while (*str == '#' || *str == '-' || *str == '+' || *str == ' ' || *str == '0')
+	{
+		if(*str == '#')
+			printf("hash\n");
+		else if(*str == '-')
+			printf("mettre en minuscul\n");	
+		else if(*str == '+')
+			printf("mettre en majuscul\n");	
+		else if(*str == ' ')
+			printf("mettre des espaces\n");	
+		else if(*str == '0')
+			printf("mettre des zero\n");	
+		str++;
+	}
+*/

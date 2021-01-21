@@ -4,7 +4,7 @@ FLAG = -Wall -Wextra -Werror
 
 INCLUDE = -I Includes
 
-SRCS = ft_printf.c ft_print_result.c
+SRCS = ft_printf.c ft_print_result.c ft_print_nbr_for_conv.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -14,8 +14,8 @@ libft/ft_bzero.o libft/ft_memcpy.o libft/ft_memccpy.o libft/ft_memmove.o libft/f
 libft/ft_memcmp.o libft/ft_strchr.o libft/ft_strrchr.o libft/ft_strncmp.o \
 libft/ft_strlcpy.o libft/ft_strlcat.o libft/ft_strnstr.o libft/ft_calloc.o libft/ft_strdup.o \
 libft/ft_substr.o libft/ft_strjoin.o libft/ft_strtrim.o libft/ft_split.o libft/ft_itoa.o \
-libft/ft_strmapi.o libft/ft_putchar_fd.o libft/ft_putstr_fd.o libft/ft_putendl_fd.o \
-libft/ft_putnbr_fd.o
+libft/ft_strmapi.o libft/ft_putchar.o libft/ft_putstr.o libft/ft_putendl_fd.o \
+libft/ft_putnbr.o libft/ft_str_all_chr.o
 
 
 
@@ -23,10 +23,10 @@ all : ${NAME}
 
 $(NAME):	
 	make -C ./libft
-	gcc $(FLAG) $(INCLUDE) -c $(SRCS) 
+	gcc -g $(FLAG) $(INCLUDE) -c $(SRCS) 
 	ar rc $(NAME) ${OBJS} $(OBJS_LIBFT) 
 	ranlib ${NAME}
-	gcc main.c libftprintf.a
+	gcc -g main.c libftprintf.a
 
 clean : 
 	/bin/rm -f ${OBJS}

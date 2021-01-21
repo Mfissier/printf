@@ -19,7 +19,6 @@ int ft_printf(const char *contain, ...)
 		if (*str)
 			str = ft_print_result(str, ap, &info);
 	}
-	ft_putchar('\n');
 	va_end(ap);
 	return(info.count);
 }

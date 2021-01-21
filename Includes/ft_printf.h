@@ -13,6 +13,7 @@ typedef struct	s_info
 }		t_info;
 int		ft_printf(const char *contain, ...);
 char		*ft_print_result(char *str, va_list ap, t_info *info);
+void		ft_print_nbr_for_conv(char *str, va_list ap);
 
 
 #endif
