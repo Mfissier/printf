@@ -9,11 +9,44 @@
 
 typedef struct	s_info
 {
-	int count;  
+	int		field_width;
+	int		precision;
+	char		conversion_specifier;
+	char		len_mod[3];
+	char		pre_sign[3];
+	int		count;
+	int		iszero;
+	int		is_nopre;
+	int		is_dot;
+	int		is_dot_zero;
+	int		is_dot_pre;
+	int		isp;
+	int		sign;
+	char		star;
 }		t_info;
+
+typedef struct   s_flag_info
+{
+	char	hash;
+	char	minus;
+	char	plus;
+	char	space;
+	char	zero;
+}		t_flag_info;
+
+typedef struct		s_string
+{
+	int		precision;
+	int		is_char;
+	char	chara;
+	wchar_t	wchara;
+}					t_string;
+
 int		ft_printf(const char *contain, ...);
-char		*ft_print_result(char *str, va_list ap, t_info *info);
+char		*ft_print_result(char *str, va_list ap, t_info *info, t_flag_info *flag);
 void		ft_print_nbr_for_conv(char *str, va_list ap);
+char		*ft_get_info_for_flag(t_flag_info *t_flag, char *str);
+char		*ft_get_field_width(t_info *info, char *str, va_list ap);
 
 
 #endif
