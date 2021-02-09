@@ -17,7 +17,7 @@ libft/ft_memcmp.o libft/ft_strchr.o libft/ft_strrchr.o libft/ft_strncmp.o \
 libft/ft_strlcpy.o libft/ft_strlcat.o libft/ft_strnstr.o libft/ft_calloc.o libft/ft_strdup.o \
 libft/ft_substr.o libft/ft_strjoin.o libft/ft_strtrim.o libft/ft_split.o libft/ft_itoa.o \
 libft/ft_strmapi.o libft/ft_putchar.o libft/ft_putstr.o libft/ft_putendl_fd.o \
-libft/ft_putnbr.o libft/ft_str_all_chr.o
+libft/ft_putnbr.o libft/ft_str_all_chr.o libft/ft_abs.o libft/ft_strcpy.o
 
 
 

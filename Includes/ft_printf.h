@@ -45,7 +45,7 @@ typedef struct		s_string
 
 int		ft_printf(const char *contain, ...);
 char		*ft_print_result(char *str, va_list ap, t_info *info);
-void		ft_print_nbr_for_conv(char *str, va_list ap);
+void		ft_print_nbr_for_conv(char *str, va_list ap, t_info *info);
 char		*ft_get_info_for_flag(t_info *info, char *str);
 char		*ft_get_field_width(t_info *info, char *str, va_list ap);
 
