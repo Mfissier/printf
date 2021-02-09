@@ -1,8 +1,8 @@
 #include "./Includes/ft_printf.h"
 
-char		*ft_print_result(char *str, va_list ap, t_info *info, t_flag_info *flag)
+char		*ft_print_result(char *str, va_list ap, t_info *info)
 {
-	str = ft_get_info_for_flag(flag, str);
+	str = ft_get_info_for_flag(info, str);
 	str = ft_get_field_width(info, str, ap);
 	if (ft_str_all_chr(str, "diouxXDOUpb"))
 		ft_print_nbr_for_conv(str, ap);

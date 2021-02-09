@@ -7,6 +7,15 @@
 #include <stdarg.h>
 #include "../libft/libft.h"
 
+typedef struct   s_flag_info
+{
+	char	hash;
+	char	minus;
+	char	plus;
+	char	space;
+	char	zero;
+}		t_flag_info;
+
 typedef struct	s_info
 {
 	int		field_width;
@@ -23,16 +32,8 @@ typedef struct	s_info
 	int		isp;
 	int		sign;
 	char		star;
+	t_flag_info *flag;
 }		t_info;
-
-typedef struct   s_flag_info
-{
-	char	hash;
-	char	minus;
-	char	plus;
-	char	space;
-	char	zero;
-}		t_flag_info;
 
 typedef struct		s_string
 {
@@ -43,9 +44,9 @@ typedef struct		s_string
 }					t_string;
 
 int		ft_printf(const char *contain, ...);
-char		*ft_print_result(char *str, va_list ap, t_info *info, t_flag_info *flag);
+char		*ft_print_result(char *str, va_list ap, t_info *info);
 void		ft_print_nbr_for_conv(char *str, va_list ap);
-char		*ft_get_info_for_flag(t_flag_info *t_flag, char *str);
+char		*ft_get_info_for_flag(t_info *info, char *str);
 char		*ft_get_field_width(t_info *info, char *str, va_list ap);
 
 

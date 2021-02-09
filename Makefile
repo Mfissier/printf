@@ -5,7 +5,7 @@ FLAG = -Wall -Wextra -Werror
 INCLUDE = -I Includes
 
 SRCS = ft_printf.c ft_print_result.c ft_print_nbr_for_conv.c \
-       ft_get_info_for_flag.c
+       ft_get_info_for_flag.c ft_get_field_width.c
 
 
 OBJS = $(SRCS:.c=.o)

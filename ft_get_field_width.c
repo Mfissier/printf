@@ -1,4 +1,4 @@
-
+#include "./Includes/ft_printf.h"
 char			*ft_get_field_width(t_info *info, char *str, va_list ap)
 {
 	info->field_width = -1;
@@ -8,11 +8,11 @@ char			*ft_get_field_width(t_info *info, char *str, va_list ap)
 		str++;
 	if (*str == '*')
 	{
-		info->field_width = va_arg(args, int);
+		info->field_width = va_arg(ap, int);
 		if (info->field_width < 0)
 		{
-			info->field_width = -info->field_width;
-			info->flag_info->minus = '-';
+			info->field_width = info->field_width;
+			info->flag->minus = '-';
 		}
 		str++;
 	}
