@@ -2,7 +2,8 @@
 
 int main(void)
 {
-	printf("%d", ft_printf("%d%x%X%u%p%i"));
+	printf("ft_printf nbr = %d\n", ft_printf("%d\n", 12345));
+	printf("printf nbr = %d\n", printf("%d\n", 12345));
 
 	return(0);
 }

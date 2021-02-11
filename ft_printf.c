@@ -20,8 +20,10 @@ int ft_printf(const char *contain, ...)
 			str++;
 		if (*str)
 			str = ft_print_result(str, ap, &info);
+		if (!*str)
+			break;
 		str++;
 	}
 	va_end(ap);
-	return(info.count);
+	return (info.count);
 }

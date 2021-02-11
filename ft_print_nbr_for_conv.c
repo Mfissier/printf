@@ -6,6 +6,9 @@ void		print_result(unsigned long long nbr, t_info *info, int base)
 	char		str[50];
 	int		len;
 	const char	tab[] = "0123456789abcdef";
+	int index;
+
+	index = 0;
 
 	i = 49;
 	info->sign = 0;
@@ -24,6 +27,12 @@ void		print_result(unsigned long long nbr, t_info *info, int base)
 		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
+	while(str[index])
+	{
+		if (str[index] != '*')
+			info->count += ft_putchar(str[index]);
+		index++;
+	}
 	//print_nbr(info, str, len);
 }
 
@@ -33,7 +42,9 @@ void		print_result_d(long long nbr, t_info *info, int base)
 	char				str[50];
 	int					len;
 	const char			tab[] = "0123456789abcdef";
+	int index;
 
+	index = 0;
 	i = 49;
 	info->sign = 0;
 	info->iszero = 0;
@@ -53,6 +64,12 @@ void		print_result_d(long long nbr, t_info *info, int base)
 		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
+	while(str[index])
+	{
+		if (str[index] != '*')
+			info->count += ft_putchar(str[index]);
+		index++;
+	}
 	//print_nbr(info, str, len);
 }
 
@@ -63,6 +80,9 @@ void		print_result_capx(unsigned long long nbr, \
 	char				str[50];
 	int					len;
 	const char			tab[] = "0123456789ABCDEF";
+	int index;
+
+	index = 0;
 
 	i = 49;
 	info->sign = 0;
@@ -81,6 +101,12 @@ void		print_result_capx(unsigned long long nbr, \
 		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
+	while(str[index])
+	{
+		if (str[index] != '*')
+			info->count += ft_putchar(str[index]);
+		index++;
+	}
 	//print_nbr(info, str, len);
 }
 
@@ -93,57 +119,36 @@ void		get_take_for_convert(char s, t_info *info)
 	{
 		info->isp = 1;
 		info->flag->hash = '#';
-		ft_strcpy(info->len_mod, "l");
 		info->conversion_specifier = 'x';
 	}
-	if (s == 'D')
-	{
-		ft_strcpy(info->len_mod, "l");
-		info->conversion_specifier = 'd';
-	}
-	if (s == 'O')
-	{
-		ft_strcpy(info->len_mod, "l");
+	if (s == 'x')
+		info->conversion_specifier = 'x';
+	if (s == 'X')
+		info->conversion_specifier = 'X';
+	if (s == 'o')
 		info->conversion_specifier = 'o';
-	}
-	if (s == 'U')
-	{
-		ft_strcpy(info->len_mod, "l");
+	if (s == 'u')
 		info->conversion_specifier = 'u';
-	}
 }
 
 void		ft_print_nbr_for_conv(char *str, va_list ap, t_info *info)
 {
-	unsigned long long	nbr1 = 0;
-	long long			nbr2 = 0;
+	unsigned long long	nbr_1;
+	long long			nbr_2;
 
-	char *test;
-	nbr1 = 3;
-	nbr2 = 3;
-	
-	test = va_arg(ap, char*);
 	get_take_for_convert(*str, info);
-	//if (info->conversion_specifier == 'd')
-	//	printf("printf d");
-
-	/*nbr2 = number_to_print_signed(info, ap);
-	  else
-	  nbr1 = number_to_print_unsigned(info, ap);*/
-
 	if (info->conversion_specifier == 'd')
-		printf("print int\n");
+		nbr_2 = va_arg(ap, int);
+	else
+		nbr_1 = va_arg(ap, unsigned int);	
+	if (info->conversion_specifier == 'd')
+		print_result_d(nbr_2, info, 10);
 	else if (info->conversion_specifier == 'u')
-		printf("print unsigned\n");
+		print_result(nbr_1, info, 10);
 	else if (info->conversion_specifier == 'o')
-		printf("print o\n");
+		print_result(nbr_1, info, 8);
 	else if (info->conversion_specifier == 'x')
-		printf("print hexa\n");
+		print_result(nbr_1, info, 16);
 	else if (info->conversion_specifier == 'X')
-		printf("print HEXA\n");
-	//print_result_d(nbr2, info, 10);
-	//print_result(nbr1, info, 10);
-	//print_result(nbr1, info, 8);
-	//print_result(nbr1, info, 16);
-	//print_result_capx(nbr1, info, 16);
+		print_result_capx(nbr_1, info, 16);
 }

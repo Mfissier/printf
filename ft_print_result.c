@@ -7,9 +7,9 @@ char		*ft_print_result(char *str, va_list ap, t_info *info)
 	if (ft_str_all_chr(str, "diouxXDOUpb"))
 		ft_print_nbr_for_conv(str, ap, info);
 	else if (ft_str_all_chr(str, "cCsS"))
-		printf("FONCTION DE CONVERTION ICI POUR LES CHARACTERES\n");		
-	va_arg(ap, int);
-	info->count += 1;
+		ft_print_string_for_conv(str, ap, info);
+	info->count++;
+	str++;
 	return(str);
 }
 

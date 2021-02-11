@@ -7,6 +7,14 @@
 #include <stdarg.h>
 #include "../libft/libft.h"
 
+typedef struct		s_string
+{
+	int		precision;
+	int		is_char;
+	char	chara;
+	wchar_t	wchara;
+}					t_string;
+
 typedef struct   s_flag_info
 {
 	char	hash;
@@ -35,20 +43,12 @@ typedef struct	s_info
 	t_flag_info *flag;
 }		t_info;
 
-typedef struct		s_string
-{
-	int		precision;
-	int		is_char;
-	char	chara;
-	wchar_t	wchara;
-}					t_string;
-
 int		ft_printf(const char *contain, ...);
 char		*ft_print_result(char *str, va_list ap, t_info *info);
 void		ft_print_nbr_for_conv(char *str, va_list ap, t_info *info);
 char		*ft_get_info_for_flag(t_info *info, char *str);
 char		*ft_get_field_width(t_info *info, char *str, va_list ap);
-
+void		ft_print_string_for_conv(char *str, va_list ap, t_info *info);
 
 #endif
 
