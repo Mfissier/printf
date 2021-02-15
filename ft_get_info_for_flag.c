@@ -3,15 +3,10 @@
 char		*ft_get_info_for_flag(t_info *info, char *str)
 {
 	ft_bzero(info->flag, sizeof(t_flag_info));
-	while (*str == '#' || *str == '-' || *str == '+' \
-		|| *str == ' ' || *str == '0')
+	while (*str == '-' || *str == ' ' || *str == '0')
 	{
-		if (*str == '#')
-			info->flag->hash = '#';
-		else if (*str == '-')
+		if (*str == '-')
 			info->flag->minus = '-';
-		else if (*str == '+')
-			info->flag->plus = '+';
 		else if (*str == ' ')
 			info->flag->space = ' ';
 		else if (*str == '0')

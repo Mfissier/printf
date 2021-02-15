@@ -23,8 +23,6 @@ void		print_result(unsigned long long nbr, t_info *info, int base)
 		nbr /= base;
 	}
 	len = 49 - i;
-	if (info->iszero == 1)
-		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
 	while(str[index])
@@ -36,13 +34,12 @@ void		print_result(unsigned long long nbr, t_info *info, int base)
 	//print_nbr(info, str, len);
 }
 
-void		print_result_d(long long nbr, t_info *info, int base)
+void		print_result_d(long long nbr, t_info *info, int base, va_list ap)
 {
-	int					i;
-	char				str[50];
-	int					len;
-	const char			tab[] = "0123456789abcdef";
-	int index;
+	int		i;
+	char		str[50];
+	const char	tab[] = "0123456789abcdef";
+	int		index;
 
 	index = 0;
 	i = 49;
@@ -60,8 +57,6 @@ void		print_result_d(long long nbr, t_info *info, int base)
 		nbr /= base;
 	}
 	len = 49 - i;
-	if (info->iszero == 1)
-		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
 	while(str[index])
@@ -70,11 +65,12 @@ void		print_result_d(long long nbr, t_info *info, int base)
 			info->count += ft_putchar(str[index]);
 		index++;
 	}
-	//print_nbr(info, str, len);
+	ft_print_nbr(info, str);
+	//print_nbr(info, str, len); faire un pont ici pour annalyse des données et ensuite imprimer
 }
 
 void		print_result_capx(unsigned long long nbr, \
-		t_info *info, int base)
+		t_info *info, int base, va_list ap)
 {
 	int					i;
 	char				str[50];
@@ -83,7 +79,6 @@ void		print_result_capx(unsigned long long nbr, \
 	int index;
 
 	index = 0;
-
 	i = 49;
 	info->sign = 0;
 	info->iszero = 0;
@@ -97,8 +92,6 @@ void		print_result_capx(unsigned long long nbr, \
 		nbr /= base;
 	}
 	len = 49 - i;
-	if (info->iszero == 1)
-		len = 1;
 	while (i >= 0)
 		str[--i] = '*';
 	while(str[index])
@@ -107,7 +100,8 @@ void		print_result_capx(unsigned long long nbr, \
 			info->count += ft_putchar(str[index]);
 		index++;
 	}
-	//print_nbr(info, str, len);
+	ft_print_nbr(info, str);
+	//print_nbr(info, str, len); faire un pont ici pour annalyse des données et ensuite imprimer
 }
 
 void		get_take_for_convert(char s, t_info *info)
@@ -129,6 +123,7 @@ void		get_take_for_convert(char s, t_info *info)
 		info->conversion_specifier = 'o';
 	if (s == 'u')
 		info->conversion_specifier = 'u';
+		//Take number space.
 }
 
 void		ft_print_nbr_for_conv(char *str, va_list ap, t_info *info)
@@ -136,6 +131,8 @@ void		ft_print_nbr_for_conv(char *str, va_list ap, t_info *info)
 	unsigned long long	nbr_1;
 	long long			nbr_2;
 
+	str = ft_get_info_for_flag(info, str);
+	str = ft_get_field_width(info, str, ap);
 	get_take_for_convert(*str, info);
 	if (info->conversion_specifier == 'd')
 		nbr_2 = va_arg(ap, int);

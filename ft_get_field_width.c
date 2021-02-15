@@ -11,7 +11,7 @@ char			*ft_get_field_width(t_info *info, char *str, va_list ap)
 		info->field_width = va_arg(ap, int);
 		if (info->field_width < 0)
 		{
-			info->field_width = info->field_width;
+			info->field_width = -info->field_width; 
 			info->flag->minus = '-';
 		}
 		str++;
