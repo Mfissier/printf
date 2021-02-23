@@ -13,7 +13,7 @@ char			*ft_get_field_width(t_info *info, char *str, va_list ap)
 		{
 			info->field_width = -info->field_width; 
 			info->flag->minus = '-';
-		}
+	}
 		str++;
 	}
 	if (*str >= '1' && *str <= '9')

@@ -2,7 +2,12 @@
 
 int main(void)
 {
-	ft_printf("%10d", 111);
+//	printf("nbr ft_printf = %d\n",ft_printf("%-10d\n", 111));
+//	printf("nbr printf = %d\n", printf("%-10d\n", 111)); 
+
+	printf("nbr ft_printfhewa = %d\n", ft_printf("%x\n", 20));
+	printf("nbr printfhewa = %d\n", printf("%x\n", 20));
+	
 	int i = 111;
 	//TEST
 /*	

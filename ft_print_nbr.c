@@ -4,22 +4,37 @@ void	ft_print_nbr(t_info *info, char *str, va_list ap)
 {
 	int i;
 	char tmp;
-	char len;
+	int len;
 
-	i = 0;
-	tmp = va_arg(ap);	
-	len = ft_strlen(str);
-	if (info->minus == '-')
+	i = -1;
+	tmp = va_arg(ap, int);	
+	len = 0;
+	while(str[++i])
 	{
-		while (*str && *str != '*')
-			info->count += ft_putchar(str); 
-			while (len++ < info->field_width)
-				info->count += ft_putchar(' ');
+		if (str[i] != '*')
+			len++;
+	}
+	i = 0;
+	if (info->flag->minus == '-')
+	{
+		while (*str)
+		{
+			if (*str != '*')
+				info->count += ft_putchar(*str); 
+			str++;
+		}
+		while (len++ < info->field_width)
+			info->count += ft_putchar(' ');
 	} 
 	else
 	{
 		while (len++ < info->field_width)
+				info->count += ft_putchar(' ');
+		while (*str)
 		{
+			if (*str != '*')
+				info->count += ft_putchar(*str); 
+			str++;
 		}
 	}	
 }

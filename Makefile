@@ -6,7 +6,7 @@ INCLUDE = -I Includes
 
 SRCS = ft_printf.c ft_print_result.c ft_print_nbr_for_conv.c \
        ft_get_info_for_flag.c ft_get_field_width.c \
-       ft_print_string_for_conv.c
+       ft_print_string_for_conv.c ft_print_nbr.c
 
 
 OBJS = $(SRCS:.c=.o)

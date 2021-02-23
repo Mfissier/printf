@@ -8,8 +8,6 @@ char		*ft_print_result(char *str, va_list ap, t_info *info)
 		ft_print_nbr_for_conv(str, ap, info);
 	else if (ft_str_all_chr(str, "cCsS"))
 		ft_print_string_for_conv(str, ap, info);
-	info->count++;
-	str++;
 	return(str);
 }
 
