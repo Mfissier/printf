@@ -5,8 +5,8 @@ int main(void)
 //	printf("nbr ft_printf = %d\n",ft_printf("%-10d\n", 111));
 //	printf("nbr printf = %d\n", printf("%-10d\n", 111)); 
 
-	printf("nbr ft_printfhewa = %d\n", ft_printf("%x\n", 20));
-	printf("nbr printfhewa = %d\n", printf("%x\n", 20));
+	printf("nbr ft_printf = %d\n", ft_printf("f**%10d*\n", 1000));
+	printf("nbr printf = %d\n", printf("p**%10d*\n", 1000));
 	
 	int i = 111;
 	//TEST

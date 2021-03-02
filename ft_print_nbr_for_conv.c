@@ -1,12 +1,12 @@
 #include "./Includes/ft_printf.h"
 
+
 void	print_result(unsigned long long nbr, t_info *info, int base, va_list ap)
 {
 	int		i;
 	char		str[50];
 	const char	tab[] = "0123456789abcdef";
 	int index;
-
 	index = 0;
 
 	i = 49;
