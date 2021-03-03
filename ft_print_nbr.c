@@ -17,6 +17,10 @@ void	ft_print_nbr(t_info *info, char *str, va_list ap)
 	i = 0;
 	if (info->flag->minus == '-')
 	{
+		if (info->sign == 1)
+			info->count += ft_putchar('-');
+		if (info->iszero == 1)
+			info->count += ft_putchar('0');
 		while (*str)
 		{
 			if (*str != '*')
@@ -30,6 +34,15 @@ void	ft_print_nbr(t_info *info, char *str, va_list ap)
 	{
 		while (len++ < info->field_width)
 				info->count += ft_putchar(' ');
+		if (info->isp == 1)
+		{
+			info->count += ft_putchar('0');
+			info->count += ft_putchar('x');
+		}
+		if (info->sign == 1)
+			info->count += ft_putchar('-');
+		if (info->iszero == 1)
+			info->count += ft_putchar('0');
 		while (*str)
 		{
 			if (*str != '*')

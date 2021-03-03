@@ -12,9 +12,8 @@ void	print_result(unsigned long long nbr, t_info *info, int base, va_list ap)
 	i = 49;
 	info->sign = 0;
 	info->iszero = 0;
-	/*if (nbr == 0)
+	if (nbr == 0)
 	  info->iszero = 1;
-	  info->sign = print_sign(info, info->sign);*/
 	str[49] = '\0';
 	while (nbr >= 1)
 	{
@@ -38,12 +37,11 @@ void	print_result_d(long long nbr, t_info *info, int base, va_list ap)
 	i = 49;
 	info->sign = 0;
 	info->iszero = 0;
+	str[i] = '\0';
 	if (nbr < 0)
 		info->sign = 1;
 	if (nbr == 0)
 		info->iszero = 1;
-	//	info->sign = print_sign(info, info->sign);
-	str[49] = '\0';
 	while (nbr)
 	{
 		str[--i] = (tab[ft_abs(nbr % base)]);
@@ -109,6 +107,8 @@ void	ft_print_nbr_for_conv(char *str, va_list ap, t_info *info)
 	get_take_for_convert(*str, info);
 	if (info->conversion_specifier == 'd')
 		nbr_2 = va_arg(ap, int);
+	else if (info->isp == 1)
+	       nbr_1 = va_arg(ap, long int);	
 	else
 		nbr_1 = va_arg(ap, unsigned int);	
 	if (info->conversion_specifier == 'd')
