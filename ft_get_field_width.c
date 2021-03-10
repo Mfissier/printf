@@ -9,12 +9,12 @@ void	ft_take_point(t_info *info, char *str)
 	info->n_pt = 0;
 	if (str[i] == '.')
 		info->pt_n = 1 + 0 * i++;
-	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.')
+	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '.' || str[i] == '*')
 	{
 		if (info->pt_n == 0 && str[i] == '.')
 		{
 			info->n_pt = 1;
-			if (str[++i] >= '0' && str[i] <= '9')
+			if ((str[i + 1] == '*' && str[i - 1] == '*') || (str[++i] >= '0' && str[i] <= '9'))
 			{
 				info->n_pt_n = 1;
 				info->n_pt = 0;
@@ -39,13 +39,29 @@ char			*ft_get_field_width(t_info *info, char *str, va_list ap)
 		info->field_width = va_arg(ap, int);
 		if (info->field_width < 0)
 		{
-			info->field_width = -info->field_width; 
-			info->flag->minus = '-';
+			if (info->pt_n == 1)
+				info->pt_n = 0;
+			else
+			{
+				info->field_width = -info->field_width; 
+				info->flag->minus = '-';
+			}
 		}
+		if (info->pt_n == 1)
+			info->field_width_next = info->field_width;
 		str++;
 	}
+	if (*str == '.')
+		str++;
 	if (*str >= '0' && *str <= '9')
 		info->field_width_next = ft_atoi(str);
+	if (*str == '*')
+	{
+		info->field_width_next = va_arg(ap, int);
+		if (info->field_width_next < 0)
+			info->n_pt_n = 0;
+		str++;
+	}
 	while (*str >= '0' && *str <= '9')
 		str++;
 	return (str);

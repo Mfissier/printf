@@ -81,13 +81,9 @@ void	ft_print_string(t_info *info, char *str)
 		if (info->iszero == 1)
 			info->count += ft_putchar('0');
 		if (info->char_z == 1)
-			ft_putchar('\0');
+			info->count += ft_putchar('\0');
 		while (*str)
-		{
-			if (*str != '*')
-				info->count += ft_putchar(*str); 
-			str++;
-		}
+			info->count += ft_putchar(*(str++)); 
 		if (info->char_z == 1)
 			info->field_width--;
 		while (ln++ < info->field_width)

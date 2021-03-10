@@ -128,6 +128,7 @@ void	ft_print_nbr(t_info *info, char *str)
 		{
 			info->count += ft_putchar('0');	
 			info->count += ft_putchar('x');	
+			ln += 2;
 		}
 		while (*str)
 		{

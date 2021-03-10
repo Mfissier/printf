@@ -2,12 +2,12 @@
 
 int main(void)
 {
-	int c = 0;
-	int c1 = 1;
-	int c2 = 1;
-	int c3 = 1;
 
-	printf("V%-32p,%-32p,%-32p, %-32p\n", &c, &c1, &c2, &c3);
-	ft_printf("F%-32p,%-32p,%-32p, %-32p\n", &c, &c1, &c2, &c3);
+
+	printf("%-*.*s\n", -7, -3, "hello");
+	ft_printf("%-*.*s\n", -7, -3, "hello");
+
+	printf("%-7s", "hello");
+
 	return(0);
 }
