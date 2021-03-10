@@ -1,4 +1,35 @@
 #include "./Includes/ft_printf.h"
+void		ft_print_rest(t_info *info, char *str)
+{
+	int i;
+
+	i = 0;	
+	if (info->field_width > -1)
+	{
+		if (info->flag->minus != '-')
+		{
+			if (info->flag->zero == 'y')
+				while (++i < info->field_width)
+					info->count += ft_putchar('0');
+			if (info->flag->zero != 'y')
+				while (++i < info->field_width)
+					info->count += ft_putchar(' ');
+			if (*str == '%')
+				info->count += ft_putchar('%') + 0 * (int)str++;
+		}
+		else
+		{
+			if (*str == '%')
+				info->count += ft_putchar('%') + 0 * (int)str++;
+			if (info->flag->zero == 'y')
+				while (++i < info->field_width)
+					info->count += ft_putchar(' ');
+			if (info->flag->zero != 'y')
+				while (++i < info->field_width)
+					info->count += ft_putchar(' ');
+		}
+	}
+}
 
 char		*ft_print_result(char *str, va_list ap, t_info *info)
 {
@@ -8,6 +39,8 @@ char		*ft_print_result(char *str, va_list ap, t_info *info)
 		ft_print_nbr_for_conv(str, ap, info);
 	else if (ft_str_all_chr(str, "cCsS"))
 		ft_print_string_for_conv(str, ap, info);
+	else
+		ft_print_rest(info, str);
 	return(str);
 }
 

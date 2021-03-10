@@ -7,8 +7,8 @@ void	print_result(unsigned long long nbr, t_info *info, int base)
 	char		str[50];
 	const char	tab[] = "0123456789abcdef";
 	int index;
-	index = 0;
 
+	index = 0;
 	i = 49;
 	info->sign = 0;
 	info->iszero = 0;
@@ -66,7 +66,6 @@ void	print_result_capx(unsigned long long nbr, \
 	info->iszero = 0;
 	if (nbr == 0)
 		info->iszero = 1;
-	//	info->sign = print_sign(info, info->sign);
 	str[49] = '\0';
 	while (nbr >= 1)
 	{
